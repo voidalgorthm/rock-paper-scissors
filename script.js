@@ -1,4 +1,6 @@
 let roundMessage;
+let playerScore = 0;
+let computerScore = 0;
 
 function computerPlay() {
     let computerHand;
@@ -26,21 +28,39 @@ function getInput() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    alert(`Player chose ${playerSelection}`);
+    
     if (playerSelection === computerSelection) {
         return roundMessage = `It's a tie! ${playerSelection} ties with ${computerSelection}`;
     } else if ((playerSelection == 'rock' && computerSelection == 'paper')
         || (playerSelection == 'paper' && computerSelection == 'scissors')
         || (playerSelection == 'scissors' && computerSelection == 'rock')) {
+        computerScore += 1;
         return roundMessage = `You lose! ${playerSelection} loses to ${computerSelection}`;
     } else {
+        playerScore += 1;
         return roundMessage = `You win! ${playerSelection} beats ${computerSelection}`;
     }
 }
 
-const playerSelection = getInput();
-const computerSelection = checkCase(computerPlay());
+function game() {
+    for (let i = 1; i <= 5; i++) {
+        const scoreboard = `Player: [${playerScore}] - [${computerScore}] :Computer`;
+        alert(`Round ${i}:\n${scoreboard}`);
 
-playRound(playerSelection, computerSelection);
-alert(`${roundMessage}`);
-
+        const playerSelection = getInput();
+        const computerSelection = checkCase(computerPlay());
+        alert(`Player chose ${playerSelection}`);
+        playRound(playerSelection, computerSelection);
+        alert(`${roundMessage}`);
+    }
+    
+    if(playerScore > computerScore){
+        alert(`The player won, The computer lost!\nHumanity triumphs once again!`);
+    } else if(playerScore < computerScore) {
+        alert(`The computer won, The player lost!\nThe rise of the machines!`);
+    } else {
+        alert(`Nobody won!, a draw for the player and computer!`);
+    }
+}
+alert("Rock Paper Scissors");
+game();
