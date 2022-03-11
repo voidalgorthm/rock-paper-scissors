@@ -1,10 +1,19 @@
-let randomHand = 0;
+let computerHand;
 
 function computerPlay(){
-    randomHand = Math.floor(Math.random()*3) + 1;
+    let handGenerator = Math.floor(Math.random()*3) + 1;
 
-    if(randomHand === 1) console.log("Rock");
-    else if(randomHand === 2) console.log("Paper");
-    else if(randomHand === 3) console.log("Scissors");
+    if(handGenerator === 1) return computerHand = "Rock";
+    else if(handGenerator === 2) return computerHand = "Paper";
+    else if(handGenerator === 3) return computerHand = "Scissors";
 }
 
+const playerHand = "RoCk";
+
+function caseInsensitive(hand) { return hand.toLowerCase(); };
+
+const playerSelection = caseInsensitive(playerHand);
+const computerSelection = caseInsensitive(computerPlay());
+
+console.log(playerSelection);
+console.log(computerSelection);
