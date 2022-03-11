@@ -1,6 +1,7 @@
-let computerHand;
+let roundMessage;
 
 function computerPlay(){
+    let computerHand;
     let handGenerator = Math.floor(Math.random()*3) + 1;
 
     if(handGenerator === 1) return computerHand = "Rock";
@@ -15,5 +16,18 @@ function caseInsensitive(hand) { return hand.toLowerCase(); };
 const playerSelection = caseInsensitive(playerHand);
 const computerSelection = caseInsensitive(computerPlay());
 
-console.log(playerSelection);
-console.log(computerSelection);
+function playRound(playerSelection, computerSelection) {
+    if(playerSelection === computerSelection) {
+        return roundMessage = `It's a tie! ${playerSelection} ties with ${computerSelection}`;
+    } else if (( playerSelection=='rock' && computerSelection=='paper') 
+    || ( playerSelection=='paper' && computerSelection=='scissors')
+    || ( playerSelection=='scissors' && computerSelection=='rock')){
+        return roundMessage = `You lose! ${playerSelection} loses to ${computerSelection}`;        
+    }  else {
+        return roundMessage = `You win! ${playerSelection} beats ${computerSelection}`;
+    }
+}
+
+alert(`Player chose ${playerSelection}`);
+playRound(playerSelection, computerSelection)
+alert(`${roundMessage}`);
