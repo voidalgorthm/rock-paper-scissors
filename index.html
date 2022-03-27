@@ -14,20 +14,24 @@
     <header class="main header">
     </header>
     <div class="container">
-        <div id="main" class="card">
+        <div id="card">
             <h1 class="title">Rock Paper Scissors</h1>
             <div id="main-controls">
                 <button class="button control" id="play">PLAY</button>
-                <button class="button control disabled" id="next">NEXT</button>
+                <button class="button control disabled" id="next">WINNER</button>
                 <button class="button control disabled" id="reset">RESET</button>
             </div>
-            
-            <div id="hands" class="btn-group">
-                <button class="button hand disabled" id="rock">Rock</button>
-                <button class="button hand disabled" id="paper">Paper</button>
-                <button class="button hand disabled" id="scissors">Scissors</button>
+            <div id="hands" class="hand-btn">
+                <button class="button hand disabled" id="rock" value="rock">Rock</button>
+                <button class="button hand disabled" id="paper" value="paper">Paper</button>
+                <button class="button hand disabled" id="scissors" value="scissors">Scissors</button>
             </div>
-            <div id="status" class="status"></div>
+            <div  class="status">
+                <p id="status"></p>
+            </div>
+            <div  class="score">
+                <p id="score"></p>
+            </div>
             <div class="output">
                 <p id="output"></p>
             </div>
