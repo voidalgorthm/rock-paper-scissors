@@ -17,16 +17,19 @@
         <div id="main" class="card">
             <h1 class="title">Rock Paper Scissors</h1>
             <div id="main-controls">
-                <button class="button" id="controls">START</button>
+                <button class="button control" id="play">PLAY</button>
+                <button class="button control disabled" id="next">NEXT</button>
+                <button class="button control disabled" id="reset">RESET</button>
             </div>
             
             <div id="hands" class="btn-group">
-                <button class="button disabled" id="rock">Rock</button>
-                <button class="button disabled" id="paper">Paper</button>
-                <button class="button disabled" id="scissors">Scissors</button>
+                <button class="button hand disabled" id="rock">Rock</button>
+                <button class="button hand disabled" id="paper">Paper</button>
+                <button class="button hand disabled" id="scissors">Scissors</button>
             </div>
             <div id="status" class="status"></div>
             <div class="output">
+                <p id="output"></p>
             </div>
         </div>
     </div>
