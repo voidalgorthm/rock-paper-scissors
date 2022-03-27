@@ -1,6 +1,6 @@
 const card = document.querySelector('#card')
 const play = document.getElementById('play');
-const next = document.getElementById('next');
+const winner = document.getElementById('winner');
 const reset = document.getElementById('reset');
 const hands = card.querySelectorAll('div.hand-btn > button');
 const stats = document.getElementById('status');
@@ -10,7 +10,7 @@ const output = document.getElementById('output');
 stats.textContent = 'Rock Paper Scissors 5 Rounds';
 output.textContent = 'Click Play to start!!!';
 play.addEventListener('click', gameStart);
-next.addEventListener('click', game);
+winner.addEventListener('click', game);
 
 let handChosen = false;
 hands.forEach(button => {
@@ -23,21 +23,30 @@ let playerScore = 0;
 let computerScore = 0;
 
 
-function gameStart(e) {
-    
-    
+function gameStart() {
     play.disabled = true;
-    next.disabled = false;
-    next.classList.remove('disabled');
     play.classList.add('disabled');
+    winner.disabled = false;
+    winner.classList.remove('disabled');
     hands.forEach(button => {
         button.classList.remove('disabled');
     });
-    output.textContent = 'Choose your hand in the above buttons!!!';
+    stats.textContent = 'After choosing a hand, click Winner'
+    output.textContent = 'Choose your hand in the above buttons, then press winner.';
+}
+function gameEnd() {
+    winner.disabled = true;
+    winner.classList.add('disabled');
+    reset.disabled = false;
+    reset.classList.remove('disabled');
+    hands.forEach(button => {
+        button.classList.add('disabled');
+    });
+    stats.textContent = 'We have a winner!'
+    output.textContent = determineWinner();
 }
 
 function computerPlay() {
-    let computerHand;
     let handGenerator = Math.floor(Math.random() * 3) + 1;
 
     if (handGenerator === 1) return computerHand = "Rock";
@@ -53,12 +62,10 @@ function playRound(playerSelection, computerSelection) {
         || (playerSelection == 'paper' && computerSelection == 'scissors')
         || (playerSelection == 'scissors' && computerSelection == 'rock')) {
         computerScore += 1;
-        console.log(computerScore);
-        return roundMessage = `You lose! ${playerSelection} loses to ${computerSelection}`;
+        return roundMessage = `You lose! Your ${playerSelection} loses to Computer's ${computerSelection}`;
     } else {
         playerScore += 1;
-        console.log(playerScore);
-        return roundMessage = `You win! ${playerSelection} beats ${computerSelection}`;
+        return roundMessage = `You win! Your ${playerSelection} beats Computer's ${computerSelection}`;
     }
 }
 
@@ -72,7 +79,7 @@ function selectHand(e) {
     playerSelection = e.target.value;
 }
 
-function game(e) {
+function game() {
     if (handChosen) {
         output.textContent = 'Choose your hand in the above buttons!!!';
 
@@ -83,14 +90,18 @@ function game(e) {
         showScore();
         output.textContent = roundMessage;
     }
+
+    if (playerScore === 5 || computerScore === 5) {
+        gameEnd();
+    }
 }
 
-function determineWinner(e) {
+function determineWinner() {
     if (playerScore > computerScore) {
-        console.log(`The player won, The computer lost!\nHumanity triumphs once again!`);
+        return `The player won, The computer lost!\nHumanity triumphs once again!`;
     } else if (playerScore < computerScore) {
-        console.log(`The computer won, The player lost!\nThe rise of the machines!`);
+        return `The computer won, The player lost!\nThe rise of the machines!`;
     } else {
-        console.log(`Nobody won!, a draw for the player and computer!`);
+        return `Nobody won!, a draw for the player and computer!`;
     }
 }

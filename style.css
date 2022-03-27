@@ -67,6 +67,20 @@
     height: 150px;
 }
 
+#output {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#output {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 8px;
+}
+
 .button {
   border: none;
   color: white;
