@@ -1,3 +1,7 @@
+const container = document.querySelector('container');
+const dashboard = document.getElementById('dashboard');
+const output = document.querySelector('output');
+
 let roundMessage;
 let playerScore = 0;
 let computerScore = 0;
@@ -13,22 +17,17 @@ function computerPlay() {
 
 function checkCase(hand) { return hand.toLowerCase(); };
 
-function getInput() {
-    while (true) {
-        const playerHand = prompt("Hand?", "").toLowerCase();
-
-        if (playerHand === 'rock' || playerHand === 'paper' || playerHand === 'scissors') {
-            return playerHand;
-        } else if (playerHand === null || playerHand === NaN)
-            alert("Impossible! Try again!");
-        else {
-            alert("Invalid hand! Try again!");
-        }
-    }
+function selectHand(e) {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            return playerHand = button.textContent;
+        });
+    });
 }
 
 function playRound(playerSelection, computerSelection) {
-    
+
     if (playerSelection === computerSelection) {
         return roundMessage = `It's a tie! ${playerSelection} ties with ${computerSelection}`;
     } else if ((playerSelection == 'rock' && computerSelection == 'paper')
@@ -43,24 +42,22 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    for (let i = 1; i <= 5; i++) {
-        const scoreboard = `Player: [${playerScore}] - [${computerScore}] :Computer`;
-        alert(`Round ${i}:\n${scoreboard}`);
+    const scoreboard = `Player: [${playerScore}] - [${computerScore}] :Computer`;
+    // const playerSelection = dashboard.addEventListener('click', selectHand());
 
-        const playerSelection = getInput();
-        const computerSelection = checkCase(computerPlay());
-        alert(`Player chose ${playerSelection}`);
-        playRound(playerSelection, computerSelection);
-        alert(`${roundMessage}`);
-    }
-    
-    if(playerScore > computerScore){
-        alert(`The player won, The computer lost!\nHumanity triumphs once again!`);
-    } else if(playerScore < computerScore) {
-        alert(`The computer won, The player lost!\nThe rise of the machines!`);
+    // console.log(playerSelection);
+    const computerSelection = checkCase(computerPlay());
+    console.log(computerSelection);
+    // console.log(`Player chose ${playerSelection}`);
+    playRound('rock', computerSelection);
+    // output.textContent = roundMessage;
+
+    if (playerScore > computerScore) {
+        console.log(`The player won, The computer lost!\nHumanity triumphs once again!`);
+    } else if (playerScore < computerScore) {
+        console.log(`The computer won, The player lost!\nThe rise of the machines!`);
     } else {
-        alert(`Nobody won!, a draw for the player and computer!`);
+        console.log(`Nobody won!, a draw for the player and computer!`);
     }
 }
-alert("Rock Paper Scissors");
 game();

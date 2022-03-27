@@ -1,0 +1,92 @@
+* {
+    text-align: center  ;
+}
+
+#controls {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+
+#controls:hover {
+    background-color: black;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#rock {
+    background-color: white;
+    color: black;
+    border: 2px solid red;
+}
+
+#rock:hover {
+    background-color: red;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#paper {
+    background-color: white;
+    color: black;
+    border: 2px solid green;
+}
+
+#paper:hover {
+    background-color: green;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#scissors {
+    background-color: white;
+    color: black;
+    border: 2px solid blue;
+}
+
+#scissors:hover {
+    background-color: blue;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.container {
+    border: 1px solid black;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.status {
+    margin-top: 10px;
+    border: 1px solid black;
+    width: 400px;
+    height: 50px;
+}
+
+.output {
+    border: 1px solid black;
+    width: 400px;
+    height: 150px;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
