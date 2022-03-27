@@ -7,15 +7,17 @@ const stats = document.getElementById('status');
 const score = document.getElementById('score');
 const output = document.getElementById('output');
 
-stats.textContent = 'Rock Paper Scissors 5 Rounds';
-output.textContent = 'Click Play to start!!!';
 play.addEventListener('click', gameStart);
 winner.addEventListener('click', game);
-
-let handChosen = false;
 hands.forEach(button => {
     button.addEventListener('click', selectHand);
 });
+reset.addEventListener('click', resetGame);
+
+stats.textContent = 'Rock Paper Scissors 5 Rounds';
+score.textContent = 'written by: codexeger';
+output.textContent = 'Click Play to start!!!';
+let handChosen = false;
 
 let playerSelection;
 let roundMessage;
@@ -62,10 +64,10 @@ function playRound(playerSelection, computerSelection) {
         || (playerSelection == 'paper' && computerSelection == 'scissors')
         || (playerSelection == 'scissors' && computerSelection == 'rock')) {
         computerScore += 1;
-        return roundMessage = `You lose! Your ${playerSelection} loses to Computer's ${computerSelection}`;
+        return roundMessage = `You lost! Your ${playerSelection} loses to Computer's ${computerSelection}`;
     } else {
         playerScore += 1;
-        return roundMessage = `You win! Your ${playerSelection} beats Computer's ${computerSelection}`;
+        return roundMessage = `You won! Your ${playerSelection} beats Computer's ${computerSelection}`;
     }
 }
 
@@ -98,10 +100,24 @@ function game() {
 
 function determineWinner() {
     if (playerScore > computerScore) {
-        return `The player won, The computer lost!\nHumanity triumphs once again!`;
+        return `The player wins, The computer loses!\nHumanity triumphs once again!`;
     } else if (playerScore < computerScore) {
-        return `The computer won, The player lost!\nThe rise of the machines!`;
+        return `The computer wins, The player loses!\nThe rise of the machines!`;
     } else {
-        return `Nobody won!, a draw for the player and computer!`;
+        return `Nobody wins!, a draw for the player and computer!`;
     }
+}
+
+function resetGame() {
+    stats.textContent = 'Rock Paper Scissors 5 Rounds';
+    score.textContent = 'written by: codexeger';
+    output.textContent = 'Click Play to play again!';
+    handChosen = false;
+    playerScore = 0;
+    computerScore = 0;
+    playerSelection ='';
+    play.disabled = false;
+    play.classList.remove('disabled');
+    reset.disabled = true;
+    reset.classList.add('disabled');
 }
